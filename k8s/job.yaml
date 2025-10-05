@@ -1,22 +1,21 @@
 apiVersion: batch/v1
-kind: CronJob
+kind: Job
 metadata:
   name: exec-run-app
+  annotations:
+    restartedAt: "2025-10-05T12:34:00Z"
 spec:
-  schedule: "@never"  # Uwaga – "@never" nie jest oficjalne, ale sprawdź niżej obejście
-  jobTemplate:
+  template:
+    metadata:
+      labels:
+        app: exec-run-app
     spec:
-      template:
-        metadata:
-          labels:
-            app: exec-run-app
-        spec:
-          restartPolicy: Never
-          containers:
-            - name: exec-run-app
-              image: exec-run-app:latest
-              imagePullPolicy: Never
-              resources:
-                limits:
-                  cpu: "100m"
-                  memory: "128Mi"
+      restartPolicy: Never
+      containers:
+        - name: exec-run-app
+          image: exec-run-app:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
