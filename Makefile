@@ -8,12 +8,7 @@ docker-build:
 	@bash -c 'eval $$(minikube docker-env) && docker build -t exec-run-app:latest .'
 
 argo-redeploy:
-	argocd app sync exec-run-app --force && kubectl rollout restart deployment exec-run-app
-
-redeploy:
-	eval $(minikube docker-env) && docker build -t exec-run-app:latest .
-	kubectl rollout restart deployment exec-run-app
-
+	kubectl create job exec-run-app-$(date +%s) --from=cronjob/exec-run-app
 
 argo-create:
 	argocd app create exec-run-app \
