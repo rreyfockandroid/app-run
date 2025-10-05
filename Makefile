@@ -20,5 +20,7 @@ argo-create:
     --repo https://github.com/rreyfockandroid/app-run \
     --path k8s \
     --dest-namespace default \
-    --dest-server "https://kubernetes.default.svc" \
-    --sync-policy automated --self-heal --auto-prune
+    --dest-server https://kubernetes.default.svc \
+    --sync-policy automated \
+    --self-heal \
+    --auto-prune

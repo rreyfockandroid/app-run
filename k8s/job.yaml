@@ -1,19 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: exec-run-app
-  labels:
-    app: exec-run-app
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: exec-run-app
   template:
     metadata:
       labels:
         app: exec-run-app
     spec:
+      restartPolicy: Never
       containers:
         - name: exec-run-app
           image: exec-run-app:latest
