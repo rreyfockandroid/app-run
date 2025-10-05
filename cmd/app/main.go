@@ -6,11 +6,11 @@ import (
 )
 
 func main() {
-	log.Println("start")
+	log.Println("start run app")
 	max := 60
 	for i := 0; i < max; i++ {
 		time.Sleep(time.Second)
-		log.Println("execute ", i+1)
+		log.Println(" --execute ", i+1)
 	}
-	log.Println("stop")
+	log.Println("stop run app")
 }

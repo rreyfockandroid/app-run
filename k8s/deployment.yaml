@@ -5,7 +5,7 @@ metadata:
   labels:
     app: exec-run-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: exec-run-app
